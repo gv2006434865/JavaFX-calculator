@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  *
  * @author STP
  */
-public class An20150601 extends Application {
+public class CalculatorSample extends Application {
     
     @Override
     public void start(Stage primaryStage) {
