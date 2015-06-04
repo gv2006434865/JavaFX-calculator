@@ -9,6 +9,15 @@ package an20150601;
  *
  * @author STP
  */
-public class Model {
+public class Model extends Subject{
+    private String mData;
+    public String getData() {
+        return mData;
+    }
+    
+    public void setData(String data) {
+        mData = data;
+        notifyobserver();
+    }
     
 }

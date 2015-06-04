@@ -3,25 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package an20150601;
 
 /**
  *
  * @author AN
  */
-public class View {
-
-    public View() {
-}
-    
-    public void invalidate() {
-    }
-
-    public void onDraw() {
-    }
-
-    public void upDate() {
-        invalidate();
-    }
-
+public interface Observer {
+    void upDate();
 }

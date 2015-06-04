@@ -5,10 +5,27 @@
  */
 package an20150601;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author STP
  */
 public class Subject {
-    
+
+    ArrayList<Observer> al = new ArrayList();
+
+    void attach(Observer o) {
+        al.add(o);
+    }
+
+    void datach(Observer o) {
+        al.remove(o);
+    }
+
+    void notifyobserver() {
+        for (Observer o : al) {
+            o.upDate();
+        }
+    }
 }
