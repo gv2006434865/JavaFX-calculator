@@ -48,28 +48,61 @@ public class Model extends Subject {
     }
 
     public void appendDot() {
-
+        if (!Dot) {
+            Num += ".";
+        }
+        Dot = true;
+        notifyobserver();
     }
 
     public void performOperation(Operator operator) {
         switch (operator) {
             case CLEAR:
+                Num = "0";
+                AugendNum = "";
+                notifyobserver();
                 break;
             case BACKSPACE:
+                if (Num.length() != 0) {
+                    Num = "0";
+                }
+                notifyobserver();
                 break;
             case OVER:
+                if (Num.length() != 0) {
+                    Num = "0";
+                }
+                notifyobserver();
                 break;
             case TIMES:
+                if (Num.length() != 0) {
+                    Num = "0";
+                }
+                notifyobserver();
                 break;
             case MINUS:
+                if (Num.length() != 0) {
+                    Num = "0";
+                }
+                notifyobserver();
                 break;
             case PLUS:
+                if (Num.length() != 0) {
+                    Num = "0";
+                }
+                notifyobserver();
                 break;
             case PLUS_MINUS:
+                notifyobserver();
                 break;
             case EQUAL:
+                if (Num.length() != 0) {
+                    Num = "0";
+                }
+                notifyobserver();
                 break;
             case SQRT:
+                notifyobserver();
                 break;
         }
     }
@@ -86,4 +119,10 @@ public class Model extends Subject {
      mData = data;
      notifyobserver();
      }*/
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        new Layout().setVisible(true);
+    }
 }

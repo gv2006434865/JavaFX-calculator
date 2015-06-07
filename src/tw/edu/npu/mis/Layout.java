@@ -5,13 +5,14 @@
  */
 package tw.edu.npu.mis;
 
+
 import tw.edu.npu.mis.Model.Operator;
 
 /**
  *
  * @author STP
  */
-public class Layout extends javax.swing.JFrame {
+public class Layout extends javax.swing.JFrame implements Observer{
 
     Model mModel = new Model();
 
@@ -20,6 +21,13 @@ public class Layout extends javax.swing.JFrame {
      */
     public Layout() {
         initComponents();
+        mModel.attach(this);
+    }
+    
+    
+    @Override
+    public void upDate() {
+        LProcess.setText(mModel.getDisplay());
     }
 
     /**
@@ -33,7 +41,6 @@ public class Layout extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         LProcess = new javax.swing.JLabel();
-        LSum = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         BtnMc = new javax.swing.JButton();
         BtnMs = new javax.swing.JButton();
@@ -70,9 +77,8 @@ public class Layout extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
+        LProcess.setFont(new java.awt.Font("新細明體", 0, 18)); // NOI18N
         LProcess.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-
-        LSum.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -80,19 +86,15 @@ public class Layout extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LSum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LProcess, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(LProcess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(LSum, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addGap(31, 31, 31)
+                .addComponent(LProcess, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         BtnMc.setText("MC");
@@ -582,7 +584,6 @@ public class Layout extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Layout.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -622,7 +623,6 @@ public class Layout extends javax.swing.JFrame {
     private javax.swing.JButton BtnPorM;
     private javax.swing.JButton BtnSqrt;
     private javax.swing.JLabel LProcess;
-    private javax.swing.JLabel LSum;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

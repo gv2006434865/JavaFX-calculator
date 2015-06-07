@@ -5,31 +5,33 @@
  */
 package tw.edu.npu.mis;
 
+import tw.edu.npu.mis.Layout;
 /**
  *
  * @author AN
  */
-public class View implements Observer,Showable{
-private final String mName;
+public class View implements Observer, Showable {
+
+    //private final String mName;
     private final Window mWindow;
     private final Model mModel;
+    //private Layout mLayout;
 
     /**
      * set a view object
-     * 
-     * @param name is view's name.
+     *
      * @param window detection view change.
      * @param model use to set or get data.
      */
-
-    public View(String name, Window window, Model model) {
-        mName = name;
+    //public View(String name, Window window, Model model) {
+    public View(Window window, Model model) {
+        //mName = name;
         mWindow = window;
         mModel = model;
         mModel.attach(this);
-        
+
     }
-    
+
     /**
      * Invalidate the view, which indicates it needs to be redrawn later.
      */
