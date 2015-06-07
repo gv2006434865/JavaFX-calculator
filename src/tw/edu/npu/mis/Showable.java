@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package an20150601;
+package tw.edu.npu.mis;
 
 /**
  *
  * @author AN
  */
-public interface Observer {
-    void upDate();
+public interface Showable {
+    void onDraw(); 
 }

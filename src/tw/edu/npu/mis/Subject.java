@@ -3,14 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package an20150601;
+package tw.edu.npu.mis;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author STP
- */
+
 public class Subject {
 
     ArrayList<Observer> al = new ArrayList();
