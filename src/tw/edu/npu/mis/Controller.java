@@ -24,10 +24,10 @@ public class Controller {
      */
     public void readInput() {
         System.out.print("Controller: ");
-        Scanner s = new Scanner(System.in);
+        /*Scanner s = new Scanner(System.in);
         String input = s.nextLine().trim();
         if (!input.isEmpty()) {
-            mModel.setData(input);
-        }
+           mModel.setData(input);
+        }*/
     }
 }
