@@ -63,32 +63,33 @@ public class Model extends Subject {
                 notifyobserver();
                 break;
             case BACKSPACE:
-                if (Num.length() != 0) {
-                    Num = "0";
-                }
+                
                 notifyobserver();
                 break;
             case OVER:
                 if (Num.length() != 0) {
-                    Num = "0";
+                    
+                    Num = "";
                 }
                 notifyobserver();
                 break;
             case TIMES:
                 if (Num.length() != 0) {
-                    Num = "0";
+                    AugendNum = Num;
+                    Num = "";
+                    OperatorUse = "*";
                 }
                 notifyobserver();
                 break;
             case MINUS:
                 if (Num.length() != 0) {
-                    Num = "0";
+                    Num = "";
                 }
                 notifyobserver();
                 break;
             case PLUS:
                 if (Num.length() != 0) {
-                    Num = "0";
+                    Num = "";
                 }
                 notifyobserver();
                 break;
@@ -108,7 +109,8 @@ public class Model extends Subject {
     }
 
     public String getDisplay() {
-        return Num;
+        String AugendStr = AugendNum + " " + OperatorUse + " " + Num;
+        return AugendStr;
     }
 
     /*public String getData() {
