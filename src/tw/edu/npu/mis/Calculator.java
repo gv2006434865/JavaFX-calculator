@@ -9,8 +9,8 @@ import java.lang.Math.*;
 import java.text.NumberFormat;
 
 /**
- *
- * @author STP
+ * model class of the calculator
+ * @author AN
  */
 public class Calculator extends Subject {
 
@@ -21,6 +21,9 @@ public class Calculator extends Subject {
     Boolean OperatorUsed = false;
     String OperatorUse = "";
 
+    /**
+     * available operators
+     */
     public enum Operator {
 
         CLEAR, // C
@@ -42,6 +45,10 @@ public class Calculator extends Subject {
         MEM_RECALL   // MR
     }
 
+    /**
+     * get digit from view
+     * @param digit string of addend and augend
+     */
     public void appendDigit(int digit) {
         if (Num.equals("0")) {
             Num = String.valueOf(digit);
@@ -50,7 +57,10 @@ public class Calculator extends Subject {
         }
         notifyobserver();
     }
-
+    
+    /**
+     * get point to let int tobe float 
+     */
     public void appendDot() {
         if (!Dot) {
             Num += ".";
@@ -59,6 +69,10 @@ public class Calculator extends Subject {
         notifyobserver();
     }
 
+    /**
+     * choose operator to calculate and get anser digit
+     * @param operator available operators
+     */
     public void performOperation(Operator operator) {
         switch (operator) {
             case CLEAR:
@@ -171,6 +185,10 @@ public class Calculator extends Subject {
         }
     }
 
+    /**
+     * return anser to display on view's label
+     * @return anser 
+     */
     public String getDisplay() {
         String AugendStr = AugendNum + " " + OperatorUse + " " + Num;
         return AugendStr;

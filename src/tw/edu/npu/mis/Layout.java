@@ -8,8 +8,9 @@ package tw.edu.npu.mis;
 import tw.edu.npu.mis.Calculator.Operator;
 
 /**
+ * set digit and operator
  *
- * @author STP
+ * @author AN
  */
 public class Layout extends javax.swing.JFrame implements Observer {
 
