@@ -13,9 +13,9 @@ import java.util.Scanner;
  * @author STP
  */
 public class Controller {
-    private final Model mModel;
+    private final Calculator mModel;
 
-    public Controller(Model model) {
+    public Controller(Calculator model) {
         mModel = model;
     }
 

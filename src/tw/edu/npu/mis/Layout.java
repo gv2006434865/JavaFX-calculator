@@ -5,29 +5,27 @@
  */
 package tw.edu.npu.mis;
 
-
-import tw.edu.npu.mis.Model.Operator;
+import tw.edu.npu.mis.Calculator.Operator;
 
 /**
  *
  * @author STP
  */
-public class Layout extends javax.swing.JFrame implements Observer{
+public class Layout extends javax.swing.JFrame implements Observer {
 
-    Model mModel = new Model();
+    Calculator mCalcu = new Calculator();
 
     /**
      * Creates new form NewJFrame
      */
     public Layout() {
         initComponents();
-        mModel.attach(this);
+        mCalcu.attach(this);
     }
-    
-    
+
     @Override
     public void upDate() {
-        LProcess.setText(mModel.getDisplay());
+        LProcess.setText(mCalcu.getDisplay());
     }
 
     /**
@@ -451,111 +449,111 @@ public class Layout extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnNum0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNum0ActionPerformed
-        mModel.appendDigit(0);
+        mCalcu.appendDigit(0);
     }//GEN-LAST:event_BtnNum0ActionPerformed
 
     private void BtnNum1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNum1ActionPerformed
-        mModel.appendDigit(1);
+        mCalcu.appendDigit(1);
     }//GEN-LAST:event_BtnNum1ActionPerformed
 
     private void BtnNum2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNum2ActionPerformed
-        mModel.appendDigit(2);
+        mCalcu.appendDigit(2);
     }//GEN-LAST:event_BtnNum2ActionPerformed
 
     private void BtnNum3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNum3ActionPerformed
-        mModel.appendDigit(3);
+        mCalcu.appendDigit(3);
     }//GEN-LAST:event_BtnNum3ActionPerformed
 
     private void BtnNum4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNum4ActionPerformed
-        mModel.appendDigit(4);
+        mCalcu.appendDigit(4);
     }//GEN-LAST:event_BtnNum4ActionPerformed
 
     private void BtnNum5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNum5ActionPerformed
-        mModel.appendDigit(5);
+        mCalcu.appendDigit(5);
     }//GEN-LAST:event_BtnNum5ActionPerformed
 
     private void BtnNum6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNum6ActionPerformed
-        mModel.appendDigit(6);
+        mCalcu.appendDigit(6);
     }//GEN-LAST:event_BtnNum6ActionPerformed
 
     private void BtnNum7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNum7ActionPerformed
-        mModel.appendDigit(7);
+        mCalcu.appendDigit(7);
     }//GEN-LAST:event_BtnNum7ActionPerformed
 
     private void BtnNum8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNum8ActionPerformed
-        mModel.appendDigit(8);
+        mCalcu.appendDigit(8);
     }//GEN-LAST:event_BtnNum8ActionPerformed
 
     private void BtnNum9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNum9ActionPerformed
-        mModel.appendDigit(9);
+        mCalcu.appendDigit(9);
     }//GEN-LAST:event_BtnNum9ActionPerformed
 
     private void BtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClearActionPerformed
-        mModel.performOperation(Operator.CLEAR);
+        mCalcu.performOperation(Operator.CLEAR);
     }//GEN-LAST:event_BtnClearActionPerformed
 
     private void BtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackActionPerformed
-        mModel.performOperation(Operator.BACKSPACE);
+        mCalcu.performOperation(Operator.BACKSPACE);
     }//GEN-LAST:event_BtnBackActionPerformed
 
     private void BtnDividedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDividedActionPerformed
-        mModel.performOperation(Operator.OVER);
+        mCalcu.performOperation(Operator.OVER);
     }//GEN-LAST:event_BtnDividedActionPerformed
 
     private void BtnMultiplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMultiplyActionPerformed
-        mModel.performOperation(Operator.TIMES);
+        mCalcu.performOperation(Operator.TIMES);
     }//GEN-LAST:event_BtnMultiplyActionPerformed
 
     private void BtnMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMinusActionPerformed
-        mModel.performOperation(Operator.MINUS);
+        mCalcu.performOperation(Operator.MINUS);
     }//GEN-LAST:event_BtnMinusActionPerformed
 
     private void BtnPlusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPlusActionPerformed
-        mModel.performOperation(Operator.PLUS);
+        mCalcu.performOperation(Operator.PLUS);
     }//GEN-LAST:event_BtnPlusActionPerformed
 
     private void BtnPorMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPorMActionPerformed
-        mModel.performOperation(Operator.PLUS_MINUS);
+        mCalcu.performOperation(Operator.PLUS_MINUS);
     }//GEN-LAST:event_BtnPorMActionPerformed
 
     private void BtnDotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDotActionPerformed
-        mModel.appendDot();
+        mCalcu.appendDot();
     }//GEN-LAST:event_BtnDotActionPerformed
 
     private void BtnEqualsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEqualsActionPerformed
-        mModel.performOperation(Operator.EQUAL);
+        mCalcu.performOperation(Operator.EQUAL);
     }//GEN-LAST:event_BtnEqualsActionPerformed
 
     private void BtnSqrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSqrtActionPerformed
-        mModel.performOperation(Operator.SQRT);
+        mCalcu.performOperation(Operator.SQRT);
     }//GEN-LAST:event_BtnSqrtActionPerformed
 
     private void BtnMcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMcActionPerformed
-        mModel.performOperation(Operator.MEM_CLEAR);
+        mCalcu.performOperation(Operator.MEM_CLEAR);
     }//GEN-LAST:event_BtnMcActionPerformed
 
     private void BtnMrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMrActionPerformed
-        mModel.performOperation(Operator.MEM_RECALL);
+        mCalcu.performOperation(Operator.MEM_RECALL);
     }//GEN-LAST:event_BtnMrActionPerformed
 
     private void BtnMaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMaddActionPerformed
-        mModel.performOperation(Operator.MEM_PLUS);
+        mCalcu.performOperation(Operator.MEM_PLUS);
     }//GEN-LAST:event_BtnMaddActionPerformed
 
     private void BtnMlessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMlessActionPerformed
-        mModel.performOperation(Operator.MEM_MINUS);
+        mCalcu.performOperation(Operator.MEM_MINUS);
     }//GEN-LAST:event_BtnMlessActionPerformed
 
     private void BtnMsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMsActionPerformed
-        mModel.performOperation(Operator.MEM_SET);
+        mCalcu.performOperation(Operator.MEM_SET);
     }//GEN-LAST:event_BtnMsActionPerformed
 
     private void BtnPercentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPercentActionPerformed
-        mModel.performOperation(Operator.PERCENT);
+        mCalcu.performOperation(Operator.PERCENT);
     }//GEN-LAST:event_BtnPercentActionPerformed
 
     private void BtnDiviXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDiviXActionPerformed
-        mModel.performOperation(Operator.RECIPROCAL);
+        mCalcu.performOperation(Operator.RECIPROCAL);
     }//GEN-LAST:event_BtnDiviXActionPerformed
 
     /**
