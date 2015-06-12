@@ -20,7 +20,7 @@ public class Calculator extends Subject {
     String mAugendNum = "";
     Boolean mDot = false;
     Boolean mOperatorUsed = false;
-    String OperatorUse = "";
+    String mOperatorUse = "";
 
     /**
      * available operators
@@ -91,11 +91,11 @@ public class Calculator extends Subject {
                 notifyobserver();
                 break;
             case BACKSPACE:
-                if (mNum.length() == 0 && mAugendNum.length() != 0 && OperatorUse.length() == 0) {
+                if (mNum.length() == 0 && mAugendNum.length() != 0 && mOperatorUse.length() == 0) {
                     mAugendNum = mAugendNum.replace(mAugendNum, mAugendNum.substring(0, mAugendNum.length() - 1).toString());
                 }
-                if (mNum.length() == 0 && mAugendNum.length() != 0 && OperatorUse.length() != 0) {
-                    OperatorUse = "";
+                if (mNum.length() == 0 && mAugendNum.length() != 0 && mOperatorUse.length() != 0) {
+                    mOperatorUse = "";
                 }
                 if (mNum.length() != 0) {
                     mNum = mNum.replace(mNum, mNum.substring(0, mNum.length() - 1).toString());
@@ -107,7 +107,7 @@ public class Calculator extends Subject {
                 if (mNum.length() != 0) {
                     mAugendNum = mNum;
                     mNum = "";
-                    OperatorUse = "/";
+                    mOperatorUse = "/";
                     mOperatorUsed = true;
                 }
                 notifyobserver();
@@ -117,7 +117,7 @@ public class Calculator extends Subject {
                 if (mNum.length() != 0) {
                     mAugendNum = mNum;
                     mNum = "";
-                    OperatorUse = "*";
+                    mOperatorUse = "*";
                     mOperatorUsed = true;
                 }
                 notifyobserver();
@@ -127,7 +127,7 @@ public class Calculator extends Subject {
                 if (mNum.length() != 0) {
                     mAugendNum = mNum;
                     mNum = "";
-                    OperatorUse = "-";
+                    mOperatorUse = "-";
                     mOperatorUsed = true;
                 }
                 notifyobserver();
@@ -137,7 +137,7 @@ public class Calculator extends Subject {
                 if (mNum.length() != 0) {
                     mAugendNum = mNum;
                     mNum = "";
-                    OperatorUse = "+";
+                    mOperatorUse = "+";
                     mOperatorUsed = true;
                 }
                 notifyobserver();
@@ -167,8 +167,8 @@ public class Calculator extends Subject {
                 notifyobserver();
                 break;
             case EQUAL:
-                if ((mNum.length() != 0) && (mAugendNum.length() != 0) && (OperatorUse.length() != 0)) {
-                    switch (OperatorUse) {
+                if ((mNum.length() != 0) && (mAugendNum.length() != 0) && (mOperatorUse.length() != 0)) {
+                    switch (mOperatorUse) {
                         case "+":
                             mNum = String.valueOf(Double.parseDouble(mAugendNum) + Double.parseDouble(mNum));
                             break;
@@ -182,7 +182,7 @@ public class Calculator extends Subject {
                             mNum = String.valueOf(Double.parseDouble(mAugendNum) / Double.parseDouble(mNum));
                             break;
                     }
-                    OperatorUse = "";
+                    mOperatorUse = "";
                     mAugendNum = "";
                     mDot = false;
                     mOperatorUsed = false;
@@ -204,7 +204,7 @@ public class Calculator extends Subject {
      * @return anser
      */
     public String getDisplay() {
-        String mAugendStr = mAugendNum + " " + OperatorUse + " " + mNum;
+        String mAugendStr = mAugendNum + " " + mOperatorUse + " " + mNum;
         return mAugendStr;
     }
 
