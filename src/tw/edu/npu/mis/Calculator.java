@@ -14,14 +14,12 @@ import java.text.NumberFormat;
  * @author AN
  */
 public class Calculator extends Subject {
-
-    private String mData;
-    String mNum = "";
-    String mAugendNum = "";
-    Boolean mDot = false;
-    Boolean mOperatorUsed = false;
-    String mOperatorUse = "";
-    String mMenStr = "";
+    String mNum = "";  // 算術結果，運算元
+    String mAugendNum = ""; // 被運算元
+    Boolean mDot = false;  //檢查小數點
+    Boolean mOperatorUsed = false;  //檢查運算子是否有使用
+    String mOperatorUse = ""; //紀錄正在使用的運算子
+    String mMenStr = "";  //Memory 紀錄
 
     /**
      * available operators
