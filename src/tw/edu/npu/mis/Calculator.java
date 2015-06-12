@@ -16,12 +16,11 @@ import java.text.NumberFormat;
 public class Calculator extends Subject {
 
     private String mData;
-    String Num = "";
-    String AugendNum = "";
-    Boolean Dot = false;
-    Boolean OperatorUsed = false;
+    String mNum = "";
+    String mAugendNum = "";
+    Boolean mDot = false;
+    Boolean mOperatorUsed = false;
     String OperatorUse = "";
-
 
     /**
      * available operators
@@ -53,10 +52,10 @@ public class Calculator extends Subject {
      * @param digit string of addend and augend
      */
     public void appendDigit(int digit) {
-        if (Num.equals("0")) {
-            Num = String.valueOf(digit);
+        if (mNum.equals("0")) {
+            mNum = String.valueOf(digit);
         } else {
-            Num += digit;
+            mNum += digit;
         }
         notifyobserver();
     }
@@ -65,10 +64,10 @@ public class Calculator extends Subject {
      * get point to let int tobe float
      */
     public void appendDot() {
-        if (!Dot) {
-            Num += ".";
+        if (!mDot) {
+            mNum += ".";
         }
-        Dot = true;
+        mDot = true;
         notifyobserver();
     }
 
@@ -78,251 +77,125 @@ public class Calculator extends Subject {
      * @param operator available operators
      */
     public void performOperation(Operator operator) {
-        if (!OperatorUsed) {
-            switch (operator) {
-                case CLEAR:
-                    Num = "0";
-                    AugendNum = "";
-                    notifyobserver();
-                    break;
-                case CLEAR_ENTRY:
-                    if (Num.length() != 0) {
-                        Num = "0";
-                        AugendNum = "";
-                    }
-                    notifyobserver();
-                    break;
-                case BACKSPACE:
-                    if (Num.length() != 0) {
-                        Num = Num.replace(Num, Num.substring(0, Num.length() - 1).toString());
-                    }
-                    if (Num.length() == 0 && AugendNum.length() != 0) {
-                        AugendNum = AugendNum.replace(AugendNum, AugendNum.substring(0, AugendNum.length() - 1).toString());
-                    }
-                    notifyobserver();
-                    break;
-                case OVER:
-                    if (Num.length() != 0) {
-                        AugendNum = Num;
-                        Num = "";
-                        OperatorUse = "/";
-                        OperatorUsed = true;
-                    }
-                    notifyobserver();
-                    break;
-                case TIMES:
-                    if (Num.length() != 0) {
-                        AugendNum = Num;
-                        Num = "";
-                        OperatorUse = "*";
-                        OperatorUsed = true;
-                    }
-                    notifyobserver();
-                    break;
-                case MINUS:
-                    if (Num.length() != 0) {
-                        AugendNum = Num;
-                        Num = "";
-                        OperatorUse = "-";
-                        OperatorUsed = true;
-                    }
-                    notifyobserver();
-                    break;
-                case PLUS:
-                    if (Num.length() != 0) {
-                        AugendNum = Num;
-                        Num = "";
-                        OperatorUse = "+";
-                        OperatorUsed = true;
-                    }
-                    notifyobserver();
-                    break;
-                case RECIPROCAL:
-                    if (Num.length() != 0) {
-                        Num = String.valueOf(1 / Double.parseDouble(Num));
-                    }
-                    notifyobserver();
-                    break;
-                case PERCENT:
-                    if (Num.length() != 0) {
-                        NumberFormat nt = NumberFormat.getInstance();
-                        nt.setMinimumFractionDigits(2);
-                        Num = String.valueOf(nt.format(Double.parseDouble(Num) * 0.01));
-                    }
-                    notifyobserver();
-                    break;
-                case PLUS_MINUS:
-                    if (Num.length() != 0) {
-                        if (Double.parseDouble(Num) > 0) {
-                            Num = "-" + Num;
-                        } else {
-                            Num = String.valueOf(0.0 - Double.parseDouble(Num));
-                        }
-                    }
-                    notifyobserver();
-                    break;
-                case EQUAL:
-                    if ((Num.length() != 0) && (AugendNum.length() != 0) && (OperatorUse.length() != 0)) {
-                        switch (OperatorUse) {
-                            case "+":
-                                Num = String.valueOf(Double.parseDouble(AugendNum) + Double.parseDouble(Num));
-                                break;
-                            case "-":
-                                Num = String.valueOf(Double.parseDouble(AugendNum) - Double.parseDouble(Num));
-                                break;
-                            case "*":
-                                Num = String.valueOf(Double.parseDouble(AugendNum) * Double.parseDouble(Num));
-                                break;
-                            case "/":
-                                Num = String.valueOf(Double.parseDouble(AugendNum) / Double.parseDouble(Num));
-                                break;
-                        }
-                        OperatorUse = "";
-                        AugendNum = "";
-                        Dot = false;
-                        OperatorUsed = false;
-                    }
-                    notifyobserver();
-                    break;
-                case SQRT:
-                    if (!OperatorUsed) {
-                        Num = String.valueOf(Math.sqrt(Double.parseDouble(Num)));
-                    }
-                    notifyobserver();
-                    break;
-            }
-        } else {
-            if ((Num.length() != 0) && (AugendNum.length() != 0) && (OperatorUse.length() != 0)) {
-                switch (OperatorUse) {
-                    case "+":
-                        AugendNum = String.valueOf(Double.parseDouble(AugendNum) + Double.parseDouble(Num));
-                        break;
-                    case "-":
-                        AugendNum = String.valueOf(Double.parseDouble(AugendNum) - Double.parseDouble(Num));
-                        break;
-                    case "*":
-                        AugendNum = String.valueOf(Double.parseDouble(AugendNum) * Double.parseDouble(Num));
-                        break;
-                    case "/":
-                        AugendNum = String.valueOf(Double.parseDouble(AugendNum) / Double.parseDouble(Num));
-                        break;
+        //if (!OperatorUsed) {
+        switch (operator) {
+            case CLEAR:
+                mNum = "0";
+                mAugendNum = "";
+                notifyobserver();
+                break;
+            case CLEAR_ENTRY:
+                if (mNum.length() != 0) {
+                    mNum = "0";
                 }
-            }
-            OperatorUse = "";
-            Dot = false;
-            Num = "";
-            OperatorUsed = false;
-            switch (operator) {
-                case CLEAR:
-                    Num = "0";
-                    AugendNum = "";
-                    notifyobserver();
-                    break;
-                case CLEAR_ENTRY:
-                    Num = "0";
-                    AugendNum = "";
-                    notifyobserver();
-                    break;
-                case BACKSPACE:
-                    if (Num.length() != 0) {
-                        Num = Num.replace(Num, Num.substring(0, Num.length() - 1).toString());
+                notifyobserver();
+                break;
+            case BACKSPACE:
+                if (mNum.length() == 0 && mAugendNum.length() != 0 && OperatorUse.length() == 0) {
+                    mAugendNum = mAugendNum.replace(mAugendNum, mAugendNum.substring(0, mAugendNum.length() - 1).toString());
+                }
+                if (mNum.length() == 0 && mAugendNum.length() != 0 && OperatorUse.length() != 0) {
+                    OperatorUse = "";
+                }
+                if (mNum.length() != 0) {
+                    mNum = mNum.replace(mNum, mNum.substring(0, mNum.length() - 1).toString());
+                }
+                notifyobserver();
+                break;
+            case OVER:
+                performOperation(Operator.EQUAL);
+                if (mNum.length() != 0) {
+                    mAugendNum = mNum;
+                    mNum = "";
+                    OperatorUse = "/";
+                    mOperatorUsed = true;
+                }
+                notifyobserver();
+                break;
+            case TIMES:
+                performOperation(Operator.EQUAL);
+                if (mNum.length() != 0) {
+                    mAugendNum = mNum;
+                    mNum = "";
+                    OperatorUse = "*";
+                    mOperatorUsed = true;
+                }
+                notifyobserver();
+                break;
+            case MINUS:
+                performOperation(Operator.EQUAL);
+                if (mNum.length() != 0) {
+                    mAugendNum = mNum;
+                    mNum = "";
+                    OperatorUse = "-";
+                    mOperatorUsed = true;
+                }
+                notifyobserver();
+                break;
+            case PLUS:
+                performOperation(Operator.EQUAL);
+                if (mNum.length() != 0) {
+                    mAugendNum = mNum;
+                    mNum = "";
+                    OperatorUse = "+";
+                    mOperatorUsed = true;
+                }
+                notifyobserver();
+                break;
+            case RECIPROCAL:
+                if (mNum.length() != 0) {
+                    mNum = String.valueOf(1 / Double.parseDouble(mNum));
+                }
+                notifyobserver();
+                break;
+            case PERCENT:
+                if (mNum.length() != 0) {
+                    NumberFormat nt = NumberFormat.getInstance();
+                    nt.setMinimumFractionDigits(2);
+                    mNum = String.valueOf(nt.format(Double.parseDouble(mNum) * 0.01));
+                }
+                notifyobserver();
+                break;
+            case PLUS_MINUS:
+                if (mNum.length() != 0) {
+                    if (Double.parseDouble(mNum) > 0) {
+                        mNum = "-" + mNum;
+                    } else {
+                        mNum = String.valueOf(0.0 - Double.parseDouble(mNum));
                     }
-                    if (Num.length() == 0 && AugendNum.length() != 0) {
-                        AugendNum = AugendNum.replace(AugendNum, AugendNum.substring(0, AugendNum.length() - 1).toString());
+                }
+                notifyobserver();
+                break;
+            case EQUAL:
+                if ((mNum.length() != 0) && (mAugendNum.length() != 0) && (OperatorUse.length() != 0)) {
+                    switch (OperatorUse) {
+                        case "+":
+                            mNum = String.valueOf(Double.parseDouble(mAugendNum) + Double.parseDouble(mNum));
+                            break;
+                        case "-":
+                            mNum = String.valueOf(Double.parseDouble(mAugendNum) - Double.parseDouble(mNum));
+                            break;
+                        case "*":
+                            mNum = String.valueOf(Double.parseDouble(mAugendNum) * Double.parseDouble(mNum));
+                            break;
+                        case "/":
+                            mNum = String.valueOf(Double.parseDouble(mAugendNum) / Double.parseDouble(mNum));
+                            break;
                     }
-                    notifyobserver();
-                    break;
-                case OVER:
-                    if (AugendNum.length() != 0) {
-                        //AugendNum = Num;
-                        Num = "";
-                        OperatorUse = "/";
-                        OperatorUsed = true;
-                    }
-                    notifyobserver();
-                    break;
-                case TIMES:
-                    if (AugendNum.length() != 0) {
-                        //AugendNum = Num;
-                        Num = "";
-                        OperatorUse = "*";
-                        OperatorUsed = true;
-                    }
-                    notifyobserver();
-                    break;
-                case MINUS:
-                    if (AugendNum.length() != 0) {
-                        //AugendNum = Num;
-                        Num = "";
-                        OperatorUse = "-";
-                        OperatorUsed = true;
-                    }
-                    notifyobserver();
-                    break;
-                case PLUS:
-                    if (AugendNum.length() != 0) {
-                        //AugendNum = Num;
-                        Num = "";
-                        OperatorUse = "+";
-                        OperatorUsed = true;
-                    }
-                    notifyobserver();
-                    break;
-                case RECIPROCAL:
-                    if (Num.length() != 0) {
-                        Num = String.valueOf(1 / Double.parseDouble(Num));
-                    }
-                    notifyobserver();
-                    break;
-                case PERCENT:
-                    if (Num.length() != 0) {
-                        NumberFormat nt = NumberFormat.getInstance();
-                        nt.setMinimumFractionDigits(2);
-                        Num = String.valueOf(nt.format(Double.parseDouble(Num) * 0.01));
-                    }
-                    notifyobserver();
-                    break;
-                case PLUS_MINUS:
-                    if (AugendNum.length() != 0) {
-                        if (Double.parseDouble(Num) > 0) {
-                            Num = "-" + Num;
-                        } else {
-                            Num = String.valueOf(0.0 - Double.parseDouble(Num));
-                        }
-                    }
-                    notifyobserver();
-                    break;
-                case EQUAL:
-                    if ((Num.length() != 0) && (AugendNum.length() != 0) && (OperatorUse.length() != 0)) {
-                        switch (OperatorUse) {
-                            case "+":
-                                AugendNum = String.valueOf(Double.parseDouble(AugendNum) + Double.parseDouble(Num));
-                                break;
-                            case "-":
-                                AugendNum = String.valueOf(Double.parseDouble(AugendNum) - Double.parseDouble(Num));
-                                break;
-                            case "*":
-                                AugendNum = String.valueOf(Double.parseDouble(AugendNum) * Double.parseDouble(Num));
-                                break;
-                            case "/":
-                                AugendNum = String.valueOf(Double.parseDouble(AugendNum) / Double.parseDouble(Num));
-                                break;
-                        }
-                        OperatorUse = "";
-                        Num = "";
-                        Dot = false;
-                        OperatorUsed = false;
-                    }
-                    notifyobserver();
-                    break;
-                case SQRT:
-                    if (!OperatorUsed) {
-                        Num = String.valueOf(Math.sqrt(Double.parseDouble(Num)));
-                    }
-                    notifyobserver();
-                    break;
-            }
-        }
+                    OperatorUse = "";
+                    mAugendNum = "";
+                    mDot = false;
+                    mOperatorUsed = false;
+                }
+                notifyobserver();
+                break;
+            case SQRT:
+                if (!mOperatorUsed) {
+                    mNum = String.valueOf(Math.sqrt(Double.parseDouble(mNum)));
+                }
+                notifyobserver();
+                break;
+        }     
     }
 
     /**
@@ -331,8 +204,8 @@ public class Calculator extends Subject {
      * @return anser
      */
     public String getDisplay() {
-        String AugendStr = AugendNum + " " + OperatorUse + " " + Num;
-        return AugendStr;
+        String mAugendStr = mAugendNum + " " + OperatorUse + " " + mNum;
+        return mAugendStr;
     }
 
     /**
