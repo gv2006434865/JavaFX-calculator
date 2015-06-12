@@ -21,6 +21,7 @@ public class Calculator extends Subject {
     Boolean mDot = false;
     Boolean mOperatorUsed = false;
     String mOperatorUse = "";
+    String mMenStr = "";
 
     /**
      * available operators
@@ -195,7 +196,18 @@ public class Calculator extends Subject {
                 }
                 notifyobserver();
                 break;
-        }     
+            case MEM_CLEAR:
+                String mMenStr = "";
+                break;
+            case MEM_PLUS:
+                break;
+            case MEM_MINUS:
+                break;
+            case MEM_SET:
+                break;
+            case MEM_RECALL:
+                break;
+        }
     }
 
     /**
