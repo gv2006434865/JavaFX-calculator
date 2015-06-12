@@ -197,13 +197,22 @@ public class Calculator extends Subject {
                 notifyobserver();
                 break;
             case MEM_CLEAR:
-                String mMenStr = "";
+                mMenStr = "";
                 break;
             case MEM_PLUS:
                 break;
             case MEM_MINUS:
                 break;
             case MEM_SET:
+                performOperation(Operator.EQUAL);
+                mMenStr = "";
+                if (mNum.length() != 0) {
+                    if (Integer.parseInt(mNum) > 0) {
+                        performOperation(Operator.MEM_PLUS);
+                    } else {
+                        performOperation(Operator.MEM_MINUS);
+                    }
+                }
                 break;
             case MEM_RECALL:
                 break;
