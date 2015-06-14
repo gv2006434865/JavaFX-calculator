@@ -81,6 +81,7 @@ public class Calculator extends Subject {
             case CLEAR:
                 mNum = "0";
                 mAugendNum = "";
+                mOperatorUse = "";
                 notifyobserver();
                 break;
             case CLEAR_ENTRY:
